@@ -1,6 +1,8 @@
 # GA4 Benchmarking Extractor (Percentiles + Performance) — JavaScript
 
-This repository contains a JavaScript script that extracts **benchmarking data** from the Google Analytics 4 (GA4) interface, including **P25 / P50 / P75 percentiles** as well as **your own performance** for a list of metrics, over a defined **date range** and for a specific **Benchmark Industry / Group** (e.g. *“Alternative & Natural Medicine”*).
+## 👀 Overview
+
+This repository contains a [JavaScript](Javascript-GA4-scraping.js) script that extracts **benchmarking data** from the Google Analytics 4 (GA4) interface, including **P25 / P50 / P75 percentiles** as well as **your own performance** for a list of metrics, over a defined **date range** and for a specific **Benchmark Industry / Group** (e.g. *“Alternative & Natural Medicine”*).
 
 The script sends `POST` requests to an internal GA4 endpoint (`/data/v2/venus`) and then:
 - aggregates results by **date** and **metric**
@@ -28,6 +30,8 @@ The generated CSV file contains the following columns:
 - Percentile75  
 - Your Own Performance  
 
+![Sample](Images/Sample.png)
+
 ---
 
 ## ⚠️ Prerequisites
@@ -50,33 +54,44 @@ The generated CSV file contains the following columns:
 
 ### Required updates
 
-- **Update the date range** you want to extract data for:
-"const allDates = generateDateRangeISO("2025-05-01", "2025-11-11"); // ✏️ update"
+Once you get the script, you need to adapt it to your GA account. Some updates are needed:
 
-- **Update the benchmarking industry (group ID)** for:
-"const groupData = [{ id: 1083, label: "Alternative & Natural Medicine" }];
-// ✏️ find it in: payload > Request > 0 > groupId"
+- **Update the date range** you want to extract data:
+
+Modify **2025-05-01** and **2025-11-11** in the code line:
+`const allDates = generateDateRangeISO("2025-05-01", "2025-11-11"); // ✏️ update`
+
+- **Update the benchmarking industry (group ID)**:
+
+Modify **id: 1083** and **label: "Alternative & Natural Medicine"** in the code line:
+`const groupData = [{ id: 1083, label: "Alternative & Natural Medicine" }]; // ✏️ find it in: payload > Request > 0 > groupId`
 
 ![GroupID](Images/GroupID.png)
 
-- **Replace the demo GA4 property ID** for:
-"entity: { propertyId: "213025502", identityBlendingStrategy: 4 }, // ✏️ update"
-and in the URL
-"const url = `${baseURL}?accessmode=read&reportId=dashboard_card_00&dataset=a47514551p213025502&hl=en_GB&gamonitor=gafe&state=app.reports.reports.intelligenthome`;"
+- **Replace the demo GA4 property ID** with your GA property ID:
+
+Modify **213025502** in code line:
+`entity: { propertyId: "213025502", identityBlendingStrategy: 4 }, // ✏️ update`
+and **213025502** in the URL code line:
+const url = `${baseURL}?accessmode=read&reportId=dashboard_card_00&dataset=a47514551p213025502&hl=en_GB&gamonitor=gafe&state=app.reports.reports.intelligenthome`;"
 
 ![propertyID](Images/propertyID.png)
 
-- **Update the guid** for:
+- **Update the guid**:
+
+Modify the guid in the code line:
 "guid: "D3A03D1B-4136-4C53-B3E2-F688F6D14810", // ✏️ update"
 
 ![guid](Images/guid.png)
 
-- **Update the XSRF token** for:
+- **Update the XSRF token**:
+
+Modify the **AO6Y7m_PWYqxvo-kJJXGEOUdtw2lglQP3Q:1762960582835** in the code line:
 'X-GAFE4-XSRF-TOKEN': 'AO6Y7m_PWYqxvo-kJJXGEOUdtw2lglQP3Q:1762960582835', // ✏️ update
 
 ![token](Images/token.png)
 
-- Run the script in the browser console (DevTools context)
+- Copy and paste the modified script in the browser console (DevTools context) and press Enter to run this script.
 
 ![Console](Images/Console.png)
 
