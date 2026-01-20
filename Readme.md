@@ -2,7 +2,7 @@
 
 ## 👀 Overview
 
-This repository contains a [JavaScript](Javascript-GA4-scraping.js) script that extracts **benchmarking data** from the Google Analytics 4 (GA4) interface, including **P25 / P50 / P75 percentiles** as well as **your own performance** for a list of metrics, over a defined **date range** and for a specific **Benchmark Industry / Group** (e.g. *“Alternative & Natural Medicine”*).
+This repository contains a [JavaScript](https://github.com/DataMa-Solutions/GA4-Benchmarking-Data/blob/main/Javascript%20-GA4%20scraping%20.js) script that extracts **benchmarking data** from the Google Analytics 4 (GA4) interface, including **P25 / P50 / P75 percentiles** as well as **your own performance** for a list of metrics, over a defined **date range** and for a specific **Benchmark Industry / Group** (e.g. *“Alternative & Natural Medicine”*).
 
 The script sends `POST` requests to an internal GA4 endpoint (`/data/v2/venus`) and then:
 - aggregates results by **date** and **metric**
